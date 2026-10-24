@@ -1,0 +1,19 @@
+[Unit]
+Description=PANEL CONECTA WEB SSH
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=panelconecta
+Group=panelconecta
+WorkingDirectory=/opt/panel-conecta-web-ssh
+EnvironmentFile=-/etc/panel-conecta-web-ssh/panel.env
+ExecStart=/opt/panel-conecta-web-ssh/panel
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
